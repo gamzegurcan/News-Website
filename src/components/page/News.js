@@ -8,7 +8,7 @@ function News(props){
   useEffect(() => {
     
     setTimeout(() =>{
-      const URL= 'https://newsapi.org/v2/top-headlines?country=us&apiKey=4324f59ba29f4d26ae8082b7b1a7f5dd'
+      const URL= 'https://newsapi.org/v2/everything?q=apple&apiKey=4324f59ba29f4d26ae8082b7b1a7f5dd'
       fetch(URL)
         .then(response => response.json())
         .then(json => {
@@ -34,7 +34,6 @@ function News(props){
               <th scope="col">Title</th>
               <th scope="col">Author</th>
               <th scope="col">Detail</th>
-              <th scope="col">WebSite</th>
             </tr>
           </thead>
           <tbody>
@@ -44,8 +43,7 @@ function News(props){
                 <th scope="row"></th>
                 <td>{item.title}</td>
                 <td>{item.author}</td>
-                <td><Link to={`${item.author}`} >Read More...</Link></td>
-                <td><a href={item.url} target="_blank" rel="noopener noreferrer">Go to News</a></td>
+                <td><Link to={`${item.publishedAt}`} >Read More...</Link></td>
               </tr>
             )
           }
