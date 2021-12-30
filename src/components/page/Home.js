@@ -1,5 +1,6 @@
 import {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import NewsSearch from './NewsSearch';
 
 function Home(props){
   const [data,setData] = useState([])
@@ -16,24 +17,7 @@ function Home(props){
 
   return(
     <>
-      {/* {
-        data.map((item,index) => 
-        <div className="container mt-3">
-          <div className="row">
-          <div className="col-sm-6">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">{item.title}</h5>
-                <p className="card-text">{item.content}</p>
-                <Link className="btn btn-primary" to={`${item.source.id}`}>Read News</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-          
-        )
-      } */}
+      <NewsSearch props={props}/>
     </>
   );
 }
