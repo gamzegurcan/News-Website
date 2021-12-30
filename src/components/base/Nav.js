@@ -5,18 +5,14 @@ import {Link} from 'react-router-dom';
 function Nav(props){
   return(
     <>
-    
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="#">
-          NEWS
-        </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        {
+    <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-danger text-decoration-none">
+        <span class="fs-4">BBC NEWS</span>
+      </a>
+
+      <ul class="nav nav-pills">
+      {
           routes.filter(
             item => item.isNav
           ).map(
@@ -24,11 +20,9 @@ function Nav(props){
               <li className="nav-item" key={index}><Link className="nav-link" to={item.path}>{item.title}</Link></li>
           )
         }
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
+      </ul>
+    </header>
+  </div>
   </>
   );
 }

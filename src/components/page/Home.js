@@ -1,12 +1,13 @@
 import {useState,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import NewsSearch from './NewsSearch';
+import BASE_URL from '../../api'
 
 function Home(props){
   const [data,setData] = useState([])
 
   useEffect(() => {
-    fetch("https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=4324f59ba29f4d26ae8082b7b1a7f5dd")
+    fetch(`${BASE_URL}`)
     .then(response => response.json())
     .then(json => {
     //  console.log(json.articles)

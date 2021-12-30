@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import BASE_URL from '../../api'
 
 function News(props){
   const [data,setData] = useState([])
@@ -8,8 +9,8 @@ function News(props){
   useEffect(() => {
     
     setTimeout(() =>{
-      const URL= 'https://newsapi.org/v2/everything?q=apple&apiKey=4324f59ba29f4d26ae8082b7b1a7f5dd'
-      fetch(URL)
+      
+      fetch(`${BASE_URL}`)
         .then(response => response.json())
         .then(json => {
           setData(json.articles)

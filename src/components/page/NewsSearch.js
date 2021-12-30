@@ -1,5 +1,6 @@
 import {useLocation , useNavigate } from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import BASE_URL from '../../api'
 
 function NewsSearch(props){
 
@@ -10,7 +11,7 @@ function NewsSearch(props){
   const [data,setData] = useState([])
 
   useEffect(() => {
-    fetch("https://newsapi.org/v2/everything?q=apple&apiKey=4324f59ba29f4d26ae8082b7b1a7f5dd")
+    fetch(`${BASE_URL}`)
     .then(response => response.json())
     .then(json => {
     //  console.log(json.articles)
@@ -27,17 +28,27 @@ function NewsSearch(props){
   }
 return(
  <>
-    <form className="d-flex" onSubmit={formSubmit}>
+    <form m-5 className="d-flex" onSubmit={formSubmit}>
       <input className="form-control me-2" type="text" name="q" placeholder="Search" id='search' defaultValue={q} aria-label="Search" />
       <button className="btn btn-outline-danger" type="submit">Search</button>
     </form>
     {
-      location.pathname === "/search" && <h1>Search Results: {data
+      location.pathname === "/search" && <h1>News: {data
         .filter((item) => item.content.includes(q))
         .map((item) => (
-          <div>
-            <h1>{item.title}</h1>
-            <p>{item.body}</p>
+          <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src={item.urlToImage} class="img-fluid rounded-start" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{item.title}</h5>
+                  <h6 class="card-text">{item.description}</h6>
+                  <p class="card-text"><small class="text-muted">{item.publishedAt}</small></p>
+                </div>
+              </div>
+            </div>
           </div>
         ))}</h1>
     }
