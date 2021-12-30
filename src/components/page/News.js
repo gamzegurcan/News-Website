@@ -1,51 +1,56 @@
-import {useState,useEffect} from 'react';
+import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 function News(props){
   const [data,setData] = useState([])
-
+  const [loading, setLoading] = useState(true)
+  
   useEffect(() => {
-    fetch("https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=eadd6a5170a44c8bb9c90ccead0e427d")
-    .then(response => response.json())
-    .then(json => {
-      // console.log(json.articles)
-      setData(json.articles)
-    })
-    .catch(error => console.log('error', error));
-  }, [])
+    
+    setTimeout(() =>{
+      const URL= 'https://newsapi.org/v2/top-headlines?country=us&apiKey=4324f59ba29f4d26ae8082b7b1a7f5dd'
+      fetch(URL)
+        .then(response => response.json())
+        .then(json => {
+          setData(json.articles)
+          setLoading(false)
+        })
+    }, 1000)
+  },[])
+
+  const loadingReturnInfo = <h1>Yükleniyor...</h1>
+
+  if(loading){
+    return loadingReturnInfo
+  }
+  
 
   return(
     <>
-     <h1>News</h1>
-     {
-       data.map(item => <li>{item.title}</li>)
-     }
-     {/* <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small>3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small>And some small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-muted">And some muted small print.</small>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-    <small class="text-muted">And some muted small print.</small>
-  </a>
-</div> */}
-        
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Detail</th>
+              <th scope="col">WebSite</th>
+            </tr>
+          </thead>
+          <tbody>
+          {
+            data.map((item,index) =>
+              <tr key={index}>
+                <th scope="row"></th>
+                <td>{item.title}</td>
+                <td>{item.author}</td>
+                <td><Link to={`${item.author}`} >Read More...</Link></td>
+                <td><a href={item.url} target="_blank" rel="noopener noreferrer">Go to News</a></td>
+              </tr>
+            )
+          }
+          </tbody>
+        </table>
     </>
   );
   
