@@ -1,9 +1,9 @@
 import {useState,useEffect} from 'react';
 import ReactPaginate from 'react-paginate';
-import NewsSearch from './NewsSearch';
+import NewsSearch from './components/NewsSearch';
 import BASE_URL from '../../api'
 import '../../index';
-import NewsCard from './NewsCard';
+import NewsCard from './components/NewsCard';
 import About from './About';
 
 function Home (props){

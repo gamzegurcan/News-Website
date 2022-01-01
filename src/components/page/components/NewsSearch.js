@@ -1,6 +1,6 @@
 import {useLocation , useNavigate } from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import BASE_URL from '../../api'
+import BASE_URL from '../../../api'
 
 
 function NewsSearch(props){
