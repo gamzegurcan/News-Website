@@ -6,7 +6,7 @@ import '../../index';
 import NewsCard from './NewsCard';
 import About from './About';
 
-const Home = (props) =>{
+function Home (props){
   const [data,setData] = useState([])
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -35,7 +35,7 @@ const Home = (props) =>{
 
   return(
     <>
-      <NewsSearch props={props}/>
+      <NewsSearch/>
       <h1 className="text-center my-5">NEWS</h1>
         <div className="container">
           <div className="row">
