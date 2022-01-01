@@ -1,7 +1,9 @@
 function NotFound(props){
   return(
     <>
-      <h1>NotFound</h1>
+      <div className="container  m-5 text-center">
+        404 Not Found
+      </div>
     </>
   );
 }

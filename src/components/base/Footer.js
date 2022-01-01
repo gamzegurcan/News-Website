@@ -1,5 +1,6 @@
 import routes from '../../routes';
 import {Link} from 'react-router-dom';
+import '../../index';
 
 function Footer(props){
   return(

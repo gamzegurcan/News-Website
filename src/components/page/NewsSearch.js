@@ -2,6 +2,7 @@ import {useLocation , useNavigate } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import BASE_URL from '../../api'
 
+
 function NewsSearch(props){
 
   const location = useLocation();
@@ -28,7 +29,7 @@ function NewsSearch(props){
   }
 return(
  <>
-    <form m-5 className="d-flex" onSubmit={formSubmit}>
+    <form  className="d-flex" onSubmit={formSubmit}>
       <input className="form-control me-2" type="text" name="q" placeholder="Search" id='search' defaultValue={q} aria-label="Search" />
       <button className="btn btn-outline-danger" type="submit">Search</button>
     </form>
@@ -36,21 +37,21 @@ return(
       location.pathname === "/search" && <h1>News: {data
         .filter((item) => item.content.includes(q))
         .map((item) => (
-          <div class="card mb-3">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src={item.urlToImage} class="img-fluid rounded-start" alt="..." />
+          <div className="card m-3">
+            <div className="row g-0">
+              <div className="col-md-4">
+                <img src={item.urlToImage} className="img-fluid rounded-start" alt="..." />
               </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">{item.title}</h5>
-                  <h6 class="card-text">{item.description}</h6>
-                  <p class="card-text"><small class="text-muted">{item.publishedAt}</small></p>
+              <div className="col-md-8">
+                <div className="card-body">
+                  <h5 className="card-title">{item.title}</h5>
+                  <h6 className="card-text">{item.description}</h6>
+                  <p className="card-text"><small className="text-muted">{item.publishedAt}</small></p>
                 </div>
               </div>
             </div>
           </div>
-        ))}</h1>
+        )) }</h1>
     }
  </>
 );
