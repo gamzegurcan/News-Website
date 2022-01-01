@@ -38,7 +38,7 @@ return(
       <button className="btn btn-outline-danger" type="submit">Search</button>
     </form>
     {
-      filteredData.length === 0 && <div>
+      (filteredData.length === 0 && location.pathname === "/search") && <div>
         <NotFound />
       </div>
     }
