@@ -6,6 +6,7 @@ import technologies from "./components/technologies";
 function About(props){
   const [show, setShow] = useState(true)
   const location = useLocation()
+
   useEffect(() =>
   {
     if (location.pathname === "/")
@@ -30,13 +31,15 @@ function About(props){
             </div>
             <div className="col-md-5 drop-cap-text mt-5">
               <h2 className="text-danger">Technologies That I Used</h2>
-              <div className="list-group">
-              {technologies.map(data =>
-                  <a href={data.url} key={data.id} target="_blank" rel="noopener   noreferrer" className="list-group-item list-group-item-action list-group-item-light">
-                    {data.title}
-                  </a>)
-                }
-              </div>
+                <ul>
+                  {
+                    technologies.map((item, index) =>
+                      <li key={index}><a href={item.url} key={item.id} target="_blank" rel="noopener noreferrer">
+                      {item.title}
+                    </a></li>
+                    )
+                  }
+                </ul>
             </div>
           </div>
         </div>

@@ -13,8 +13,8 @@ function ProjectDetail(props){
             </tr>
           </thead>
           {
-          objects.map(item =>
-          <tbody>
+          objects.map((item,index) =>
+          <tbody key={index}>
             <tr>
               <td>{item.title}</td>
               <td>{item.description}</td>

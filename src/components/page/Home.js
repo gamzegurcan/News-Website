@@ -41,7 +41,7 @@ function Home (props){
           <div className="row">
             {
               currentPageData.map((item,index) =>
-                <div className="col-md-4 py-3 " >
+                <div key={index} className="col-md-4 py-3 " >
                   <NewsCard
                     key={index}
                     image={item.urlToImage}

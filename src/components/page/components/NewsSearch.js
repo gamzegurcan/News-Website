@@ -1,6 +1,7 @@
 import {useLocation , useNavigate } from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import BASE_URL from '../../../api'
+import NotFound from './NotFound';
 
 
 function NewsSearch(props){
@@ -10,6 +11,8 @@ function NewsSearch(props){
   const urlParams = new URLSearchParams(location.search)
   const [q, setQ] = useState(urlParams.get('q'))
   const [data,setData] = useState([])
+  const filteredData = data
+  .filter((item) => item.content.includes(q))
 
   useEffect(() => {
     fetch(`${BASE_URL}`)
@@ -27,6 +30,7 @@ function NewsSearch(props){
     navigate(`/search?q=${event.target.q.value}`)
 
   }
+  console.log(filteredData)
 return(
  <>
     <form  className="d-flex" onSubmit={formSubmit}>
@@ -34,10 +38,14 @@ return(
       <button className="btn btn-outline-danger" type="submit">Search</button>
     </form>
     {
-      location.pathname === "/search" && <h1>News: {data
-        .filter((item) => item.content.includes(q))
-        .map((item) => (
-          <div className="card m-3">
+      filteredData.length === 0 && <div>
+        <NotFound />
+      </div>
+    }
+    {
+      location.pathname === "/search" && <h1>News: {filteredData
+        .map((item,index) => (
+          <div key={index} className="card m-3">
             <div className="row g-0">
               <div className="col-md-4">
                 <img src={item.urlToImage} className="img-fluid rounded-start" alt="..." />
