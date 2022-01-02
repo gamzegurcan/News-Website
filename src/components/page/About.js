@@ -30,7 +30,7 @@ function About(props){
               <p>You can see all the news on this site and go to the details and search for the news.</p>
             </div>
             <div className="col-md-5 drop-cap-text mt-5">
-              <h2 className="text-danger">Technologies That I Used</h2>
+              <h2 className="text-danger">Technologies</h2>
                 <ul>
                   {
                     technologies.map((item, index) =>

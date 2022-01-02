@@ -1,6 +1,6 @@
 import Home from './components/page/Home';
 import News from './components/page/News';
-import NewsDetail from './components/page/components/NewsDetail';
+import NewsDetail from './components/page/NewsDetail';
 import NewsSearch from './components/page/components/NewsSearch';
 import About from './components/page/About';
 

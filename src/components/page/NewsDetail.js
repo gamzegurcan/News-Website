@@ -1,5 +1,6 @@
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import BASE_URL from '../../api'
 
 function NewsDetail(props){
 
@@ -7,8 +8,7 @@ function NewsDetail(props){
   const [data,setData] = useState([])
   
   useEffect(() => {
-      const URL= 'https://newsapi.org/v2/everything?q=apple&apiKey=4324f59ba29f4d26ae8082b7b1a7f5dd'
-      fetch(URL)
+      fetch(`${BASE_URL}`)
         .then(response => response.json())
         .then(json => {
           setData(json.articles.filter(item => item?.publishedAt?.includes(params.params)))

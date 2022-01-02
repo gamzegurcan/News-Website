@@ -21,7 +21,6 @@ function Home (props){
     fetch(`${BASE_URL}`)
     .then(response => response.json())
     .then(json => {
-    //  console.log(json.articles)
       setData(json.articles)
     })
     .catch(error => console.log('error', error));

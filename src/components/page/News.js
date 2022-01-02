@@ -19,7 +19,7 @@ function News(props){
     }, 1000)
   },[])
 
-  const loadingReturnInfo = <h1>Yükleniyor...</h1>
+  const loadingReturnInfo = <h1 className='text-center'>Yükleniyor...</h1>
 
   if(loading){
     return loadingReturnInfo
